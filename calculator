@@ -1,0 +1,75 @@
+from tkinter import *
+
+root=Tk()
+def ariel(event):
+   n=event.widget.cget("text")
+   
+   n=""+n
+   sypher.set(sypher.get()+n)
+   
+ 
+def ariel1(event):
+    if  '+' or '-' or '/' or '*' in sypher.get():
+        sypher.set((eval(sypher.get())))
+
+    
+def ariel2(event):
+    if ('C' in event.widget.cget("text")):
+        sypher.set('  ')  
+          
+root.geometry('300x390')
+root.minsize('300','390')
+root.maxsize('300','390')
+root.title("Calclator")
+Label(root,text='Welcome to Calculator').pack()
+frame1=Frame(root)
+sypher=StringVar()
+en=Entry(frame1,width=50, font=('Arial 35'),textvariable=sypher)
+en.pack(fill=X)
+frame1.pack(fill=X)
+frame2=Frame(root)
+for ink in range(9,6,-1):
+    k=Button(frame2,text=f'{ink}',font=('Arial 25'),bg='grey',padx=10)
+    k.pack(side=LEFT,padx=5,fill=X)
+    k.bind("<Button-1>",ariel)
+
+k=Button(frame2,text=' C',font=('Arial 25'),bg='grey',padx=10)
+k.pack()
+k.bind("<Button-1>",ariel2)    
+frame2.pack(anchor='nw')
+
+frame3=Frame(root)
+for ink in range(6,3,-1):
+    k=Button(frame3,text=f'{ink}',font=('Arial 25'),bg='grey',padx=10)
+    k.pack(side=LEFT,padx=5,fill=X)
+    k.bind("<Button-1>",ariel)
+
+k=Button(frame3,text='+',font=('Arial 25'),bg='grey',padx=11)
+k.pack()    
+frame3.pack(anchor='nw',padx=0,pady=5)
+k.bind("<Button-1>",ariel)
+
+frame4=Frame(root)
+for ink in range(3,0,-1):
+    k=Button(frame4,text=f'{ink}',font=('Arial 25'),bg='grey',padx=10)
+    k.pack(side=LEFT,anchor='w',padx=5,fill=X)
+    k.bind("<Button-1>",ariel)
+k=Button(frame4,text=' -',font=('Arial 25'),bg='grey',padx=13)
+k.pack(side=LEFT)    
+k.bind("<Button-1>",ariel)
+frame4.pack(anchor='nw',fill=X)
+frame5=Frame(root)
+k=Button(frame5,text='*',font=('Arial 25'),bg='grey',padx=12)
+k.pack(side=LEFT,padx=5,pady=5)
+k.bind("<Button-1>",ariel)
+k=Button(frame5,text='-',font=('Arial 25'),bg='grey',padx=14)
+k.pack(side=LEFT,padx=5,pady=5)
+k.bind("<Button-1>",ariel)
+k=Button(frame5,text='/',font=('Arial 25'),bg='grey',padx=14)
+k.pack(side=LEFT,padx=5,pady=5)
+k.bind("<Button-1>",ariel)
+k=Button(frame5,text='=',font=('Arial 25'),bg='grey',padx=14)
+k.pack(side=LEFT,padx=0,pady=5)
+k.bind("<Button-1>",ariel1)
+frame5.pack(side=LEFT,anchor='nw')
+root.mainloop()
